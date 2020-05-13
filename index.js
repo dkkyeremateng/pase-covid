@@ -1,8 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 
 const Case = require('./database');
 require('./runner');
+
 const app = express();
+
+app.use(express.json());
+app.options('*', cors());
 
 app.get('/', (req, res) => {
 	const country = req.query.country;
